@@ -1,0 +1,29 @@
+<%- include("partials/header") -%>
+
+<h1>Home</h1>
+
+<p><%= startingContent %></p>
+
+<!-- the for loop is fine, but a forEach is cleaner. See below. -->
+<!-- <% for (let i=0; i<blogPosts.length; i++) { %>
+    <div class="">
+        <h2><%= blogPosts[i].title %></h2>
+        <p><%= blogPosts[i].content %></p>
+    </div>
+    <% } %> -->
+
+<!-- "post" in this function can be any variable for the items that are returned in the for each.-->
+<% blogPosts.forEach(function(post){ %>
+    <div class="">
+        <h2><%= post.title %></h2>
+        <p><%= post.content.slice(0, 100) + " ..."%> <a href='/posts/<%=post.title%>'>Read More</a></p>
+    </div>
+<% }) %>
+
+
+    
+<%- include("partials/footer") -%>
+<%# include always looks into the views folders by default. 
+If a file is nested simply write out the path. #%>
+
+
